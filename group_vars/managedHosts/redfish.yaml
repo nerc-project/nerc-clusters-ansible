@@ -1,0 +1,4 @@
+bmcUsername: root
+redfishBaseURL: https://{{ bmcAddress }}
+redfishComputerSystemResetAction: "{{ redfishSystemEndpoint }}/Actions/ComputerSystem.Reset"
+

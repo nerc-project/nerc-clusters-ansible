@@ -1,0 +1,46 @@
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Ensure sysinfo directory exists
+      file:
+        path: ./sysinfo
+        state: directory
+
+- hosts: managedHosts
+  gather_facts: false
+  collections:
+    - community.general
+  tasks:
+    - name: Get system information
+      delegate_to: localhost
+      uri:
+        url: "{{ redfishBaseURL }}{{ redfishSystemEndpoint }}?$expand=.($levels=1)"
+        url_username: "{{ bmcUsername }}"
+        url_password: "{{ bmcPassword }}"
+        validate_certs: false
+        force_basic_auth: true
+      register: system
+
+    - name: Save system information to file
+      delegate_to: localhost
+      copy:
+        dest: "sysinfo/{{ inventory_hostname }}-system.yaml"
+        content: |
+          {{ system.json|to_nice_yaml }}
+
+    - name: Get idrac information
+      delegate_to: localhost
+      uri:
+        url: "{{ redfishBaseURL }}{{ redfishManagerEndpoint }}?$expand=.($levels=1)"
+        url_username: root
+        url_password: "{{ bmcPassword }}"
+        validate_certs: false
+        force_basic_auth: true
+      register: idrac
+
+    - name: Save idrac information to file
+      delegate_to: localhost
+      copy:
+        dest: "sysinfo/{{ inventory_hostname }}-idrac.yaml"
+        content: |
+          {{ idrac.json|to_nice_yaml }}

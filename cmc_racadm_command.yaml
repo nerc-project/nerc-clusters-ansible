@@ -1,0 +1,12 @@
+- hosts: cmc
+  gather_facts: false
+  tasks:
+    - when: racadmCommand is not defined
+      fail:
+        msg: You must set racadmCommand
+
+    - raw: "{{ racadmCommand }}"
+      register: action
+
+    - debug:
+        msg: "{{ action.stdout_lines }}"

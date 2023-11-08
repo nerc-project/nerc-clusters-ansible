@@ -1,0 +1,10 @@
+all:
+  children:
+    cmc:
+      vars:
+        ansible_user: root
+        ansible_password: "{{ cmcPassword }}"
+      hosts:
+        cmc-8-obm.nerc-ocp-prod.rc.fas.harvard.edu:
+        cmc-9-obm.nerc-ocp-prod.rc.fas.harvard.edu:
+        cmc-10-obm.nerc-ocp-prod.rc.fas.harvard.edu:

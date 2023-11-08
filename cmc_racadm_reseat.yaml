@@ -1,0 +1,11 @@
+- hosts: dellManagedHosts
+  gather_facts: false
+  tasks:
+    - name: Reseat host
+      delegate_to: "{{ cmcAddress }}"
+      raw: serveraction -m {{ cmcSlot }} -f reseat
+      register: action
+
+    - name: Display result
+      debug:
+        msg: "{{ inventory_hostname }}: {{ action.stdout|trim }}"

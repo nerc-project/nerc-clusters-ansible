@@ -1,0 +1,12 @@
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Create netrc file
+      copy:
+        dest: netrc
+        content: |
+          {% for host in groups.managedHosts %}
+          machine {{ hostvars[host].bmcAddress }}
+          login {{ hostvars[host].bmcUsername }}
+          password {{ hostvars[host].bmcPassword }}
+          {% endfor %}

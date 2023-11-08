@@ -1,0 +1,13 @@
+- hosts: dellManagedHosts
+  gather_facts: false
+  vars:
+    serverAction: powerstatus
+  tasks:
+    - name: Execute serveraction
+      delegate_to: "{{ cmcAddress }}"
+      raw: serveraction -m {{ cmcSlot }} {{ serverAction }}
+      register: action
+
+    - name: Display result
+      debug:
+        msg: "{{ inventory_hostname }}: {{ action.stdout|trim }}"

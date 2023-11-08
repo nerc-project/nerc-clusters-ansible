@@ -1,0 +1,21 @@
+all:
+  children:
+    obs:
+      vars:
+        description: |
+          The new logging/metrics/observability cluster, replacing the
+          observability environment hosted on nerc-ocp-infra.
+        adminContacts:
+          - larsks
+          - computate
+        ansible_user: core
+        ansible_python_interpreter: /usr/bin/python3.9
+        api_vip: 10.30.9.15
+        ingress_vip: 10.30.9.16
+      hosts:
+        ctl-0.nerc-ocp-obs.rc.fas.harvard.edu:
+        ctl-1.nerc-ocp-obs.rc.fas.harvard.edu:
+        ctl-2.nerc-ocp-obs.rc.fas.harvard.edu:
+        wrk-0.nerc-ocp-obs.rc.fas.harvard.edu:
+        wrk-1.nerc-ocp-obs.rc.fas.harvard.edu:
+        wrk-2.nerc-ocp-obs.rc.fas.harvard.edu:

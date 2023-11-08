@@ -1,0 +1,5 @@
+redfishManagerEndpoint: /redfish/v1/Managers/iDRAC.Embedded.1
+redfishSystemEndpoint: /redfish/v1/Systems/System.Embedded.1
+redfishAttachVirtualMediaAction: "{{ redfishManagerEndpoint }}/VirtualMedia/CD/Actions/VirtualMedia.InsertMedia"
+redfishDetachVirtualMediaAction: "{{ redfishManagerEndpoint }}/VirtualMedia/CD/Actions/VirtualMedia.EjectMedia"
+redfishOemImportConfigAction:    "{{ redfishManagerEndpoint }}/Actions/Oem/EID_674_Manager.ImportSystemConfiguration"

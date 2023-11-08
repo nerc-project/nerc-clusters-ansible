@@ -1,0 +1,6 @@
+- hosts: managedHosts
+  gather_facts: false
+  tasks:
+    - name: Open iDRAC console in browser
+      delegate_to: localhost
+      command: xdg-open https://{{ bmcAddress }}

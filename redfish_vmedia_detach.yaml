@@ -1,0 +1,19 @@
+- hosts: managedHosts
+  gather_facts: false
+  collections:
+    - community.general
+  tasks:
+    - name: Detach virtual media
+      delegate_to: localhost
+      uri:
+        method: POST
+        url: "{{ redfishBaseURL }}{{ redfishDetachVirtualMediaAction }}"
+        url_username: root
+        url_password: "{{ bmcPassword }}"
+        validate_certs: false
+        body_format: json
+        body: {}
+        status_code:
+          - 200
+          - 204
+      register: result

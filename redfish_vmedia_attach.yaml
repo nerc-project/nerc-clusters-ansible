@@ -1,0 +1,52 @@
+- hosts: managedHosts
+  gather_facts: false
+  collections:
+    - community.general
+  tasks:
+    - when: vmedia_url is not defined
+      fail:
+        msg: You must set vmedia_url.
+
+    - name: Attach media
+      delegate_to: localhost
+      uri:
+        method: POST
+        url: "{{ redfishBaseURL }}{{ redfishAttachVirtualMediaAction }}"
+        validate_certs: false
+        url_username: root
+        url_password: "{{ bmcPassword }}"
+        validate_certs: false
+        body_format: json
+        body:
+          Image: "{{ vmedia_url }}"
+        status_code:
+          - 200
+          - 204
+      register: result
+      ignore_errors: true
+
+    - name: Configure one-time boot from virtual media
+      delegate_to: localhost
+      uri:
+        method: POST
+        url: '{{ redfishBaseURL }}{{ redfishOemImportConfigAction }}'
+        validate_certs: false
+        status_code:
+          - 200
+          - 202
+        body_format: json
+        body:
+          ShareParameters:
+            Target: ALL
+          ImportBuffer: >-
+            <SystemConfiguration>
+            <Component FQDD="iDRAC.Embedded.1">
+            <Attribute Name="ServerBoot.1#BootOnce">Enabled</Attribute>
+            <Attribute Name="ServerBoot.1#FirstBootDevice">VCD-DVD</Attribute>
+            </Component>
+            </SystemConfiguration>
+      register: boot
+      ignore_errors: true
+
+    - debug:
+        var: boot

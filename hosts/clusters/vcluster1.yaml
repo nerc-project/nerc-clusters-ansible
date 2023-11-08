@@ -1,0 +1,11 @@
+all:
+  children:
+    vcluster1:
+      vars:
+        description: |
+          Test cluster deployed using hypershift.
+        api_vip: 10.30.8.90
+        ingress_vip: 10.30.8.91
+      hosts:
+        wrk-83.nerc-ocp-prod.rc.fas.harvard.edu:
+        wrk-84.nerc-ocp-prod.rc.fas.harvard.edu:

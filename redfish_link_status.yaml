@@ -1,0 +1,55 @@
+
+- hosts: dellManagedHosts
+  gather_facts: false
+  collections:
+    - community.general
+  tasks:
+    - name: Get system information
+      delegate_to: localhost
+      uri:
+        url: "{{ redfishBaseURL }}{{ redfishSystemEndpoint }}"
+        url_username: "{{ bmcUsername }}"
+        url_password: "{{ bmcPassword }}"
+        validate_certs: false
+      register: system
+
+    - when: >-
+        system.json.PowerState == "On"
+      block:
+        - name: Get Port information
+          delegate_to: localhost
+          uri:
+            url: "{{ redfishBaseURL }}{{ redfishSystemEndpoint }}/NetworkAdapters/NIC.Embedded.1/NetworkPorts/NIC.Embedded.1-1"
+            url_username: "{{ bmcUsername }}"
+            url_password: "{{ bmcPassword }}"
+            validate_certs: false
+          register: port
+
+        - name: Extract link status
+          set_fact:
+            LinkStatus: "{{ port.json.LinkStatus }}"
+
+        - name: Display link status
+          debug:
+            msg: "Link state: {{ LinkStatus }}"
+
+
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Ensure reports directory exists
+      file:
+        path: ./reports
+        state: directory
+
+    - name: Generate report
+      copy:
+        dest: ./reports/linkstatus.md
+        content: |
+          # Link status
+          
+          | Hostname | Link status |
+          |---|---|
+          {% for host in groups.dellManagedHosts if "LinkStatus" in hostvars[host] %}
+          | {{ host }} | {{ hostvars[host].LinkStatus }} |
+          {% endfor %}
