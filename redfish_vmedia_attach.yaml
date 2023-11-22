@@ -3,11 +3,15 @@
   collections:
     - community.general
   tasks:
-    - when: vmedia_url is not defined
+    - name: Check vmedia_url
+      tags: [always]
+      when: vmedia_url is not defined
+      run_once: true
       fail:
         msg: You must set vmedia_url.
 
     - name: Attach media
+      tags: [attach]
       delegate_to: localhost
       uri:
         method: POST
@@ -15,7 +19,6 @@
         validate_certs: false
         url_username: root
         url_password: "{{ bmcPassword }}"
-        validate_certs: false
         body_format: json
         body:
           Image: "{{ vmedia_url }}"
@@ -26,6 +29,7 @@
       ignore_errors: true
 
     - name: Configure one-time boot from virtual media
+      tags: [configure-boot]
       delegate_to: localhost
       uri:
         method: POST
