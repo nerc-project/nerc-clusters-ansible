@@ -1,0 +1,31 @@
+all:
+  children:
+    hypershift1:
+      vars:
+        ansible_user: core
+        ansible_python_interpreter: /usr/bin/python3.9
+        description: |
+          Cluster for testing Hypershift [1].
+
+          [1]: https://github.com/openshift/hypershift
+        adminContacts:
+          - larsks
+        api_vip: 10.30.8.80
+        ingress_vip: 10.30.8.81
+      children:
+        hypershift1_controllers:
+          hosts:
+          wrk-72.nerc-ocp-prod.rc.fas.harvard.edu:
+            ansible_host: 10.30.8.82
+          wrk-74.nerc-ocp-prod.rc.fas.harvard.edu:
+            ansible_host: 10.30.8.84
+          wrk-75.nerc-ocp-prod.rc.fas.harvard.edu:
+            ansible_host: 10.30.8.85
+        hypershift1_workers:
+          hosts:
+            wrk-76.nerc-ocp-prod.rc.fas.harvard.edu:
+              ansible_host: 10.30.8.86
+            wrk-77.nerc-ocp-prod.rc.fas.harvard.edu:
+              ansible_host: 10.30.8.87
+            wrk-78.nerc-ocp-prod.rc.fas.harvard.edu:
+              ansible_host: 10.30.8.88
