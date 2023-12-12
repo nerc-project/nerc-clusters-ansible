@@ -15,12 +15,12 @@ all:
       children:
         hypershift1_controllers:
           hosts:
-          wrk-72.nerc-ocp-prod.rc.fas.harvard.edu:
-            ansible_host: 10.30.8.82
-          wrk-74.nerc-ocp-prod.rc.fas.harvard.edu:
-            ansible_host: 10.30.8.84
-          wrk-75.nerc-ocp-prod.rc.fas.harvard.edu:
-            ansible_host: 10.30.8.85
+            wrk-72.nerc-ocp-prod.rc.fas.harvard.edu:
+              ansible_host: 10.30.8.82
+            wrk-74.nerc-ocp-prod.rc.fas.harvard.edu:
+              ansible_host: 10.30.8.84
+            wrk-75.nerc-ocp-prod.rc.fas.harvard.edu:
+              ansible_host: 10.30.8.85
         hypershift1_workers:
           hosts:
             wrk-76.nerc-ocp-prod.rc.fas.harvard.edu:
