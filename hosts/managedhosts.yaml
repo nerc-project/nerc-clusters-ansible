@@ -12,6 +12,9 @@ all:
             ctl-0.nerc-ocp-prod.rc.fas.harvard.edu:
             ctl-1.nerc-ocp-prod.rc.fas.harvard.edu:
             ctl-2.nerc-ocp-prod.rc.fas.harvard.edu:
+            ctl-0.nerc-ocp-test.rc.fas.harvard.edu:
+            ctl-1.nerc-ocp-test.rc.fas.harvard.edu:
+            ctl-2.nerc-ocp-test.rc.fas.harvard.edu:
         dellManagedHosts:
           hosts:
             ctl-0.nerc-ocp-obs.rc.fas.harvard.edu:
@@ -109,3 +112,13 @@ all:
             wrk-87.nerc-ocp-prod.rc.fas.harvard.edu:
             wrk-88.nerc-ocp-prod.rc.fas.harvard.edu:
             wrk-89.nerc-ocp-prod.rc.fas.harvard.edu:
+            wrk-0.nerc-ocp-test.rc.fas.harvard.edu:
+            wrk-1.nerc-ocp-test.rc.fas.harvard.edu:
+            wrk-2.nerc-ocp-test.rc.fas.harvard.edu:
+            wrk-3.nerc-ocp-test.rc.fas.harvard.edu:
+            wrk-4.nerc-ocp-test.rc.fas.harvard.edu:
+            wrk-5.nerc-ocp-test.rc.fas.harvard.edu:
+            wrk-6.nerc-ocp-test.rc.fas.harvard.edu:
+            wrk-7.nerc-ocp-test.rc.fas.harvard.edu:
+            wrk-8.nerc-ocp-test.rc.fas.harvard.edu:
+            wrk-9.nerc-ocp-test.rc.fas.harvard.edu:
