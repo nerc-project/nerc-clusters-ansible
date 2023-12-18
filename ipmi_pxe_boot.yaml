@@ -1,0 +1,40 @@
+- hosts: managedHosts
+  gather_facts: false
+  collections:
+    - community.general
+  tasks:
+    - name: Power off system
+      delegate_to: localhost
+      command:
+        cmd: >-
+          ipmitool -I lanplus -U "{{ bmcUser }}" -P "{{ bmcPassword }}"
+          -H "{{ bmcAddress }}" chassis power off
+
+    - name: Wait for power off
+      delegate_to: localhost
+      command:
+        cmd: >-
+          ipmitool -I lanplus -U "{{ bmcUser }}" -P "{{ bmcPassword }}"
+          -H "{{ bmcAddress }}" chassis power status
+      register: powerstate
+      until: >-
+        powerstate.stdout == "Chassis Power is off"
+      retries: 10
+      delay: 1
+
+    - name: Set PXE boot
+      delegate_to: localhost
+      command:
+        cmd: >-
+          ipmitool -I lanplus -U "{{ bmcUser }}" -P "{{ bmcPassword }}"
+          -H "{{ bmcAddress }}" chassis bootdev pxe
+
+    - pause:
+        seconds: 1
+
+    - name: Power on system
+      delegate_to: localhost
+      command:
+        cmd: >-
+          ipmitool -I lanplus -U "{{ bmcUser }}" -P "{{ bmcPassword }}"
+          -H "{{ bmcAddress }}" chassis power on
