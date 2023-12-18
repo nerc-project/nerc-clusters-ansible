@@ -16,13 +16,21 @@ all:
             ctl-1.nerc-ocp-test.rc.fas.harvard.edu:
             ctl-2.nerc-ocp-test.rc.fas.harvard.edu:
         dellManagedHosts:
+          children:
+            dellManagedHosts_cmd8:
+              vars:
+                cmcAddress: cmc-8-obm.nerc-ocp-prod.rc.fas.harvard.edu
+              hosts:
+                wrk-0.nerc-ocp-obs.rc.fas.harvard.edu:
+                  cmcSlot: server-1d
+                wrk-1.nerc-ocp-obs.rc.fas.harvard.edu:
+                  cmcSlot: server-3a
+                wrk-2.nerc-ocp-obs.rc.fas.harvard.edu:
+                  cmcSlot: server-3b
           hosts:
             ctl-0.nerc-ocp-obs.rc.fas.harvard.edu:
             ctl-1.nerc-ocp-obs.rc.fas.harvard.edu:
             ctl-2.nerc-ocp-obs.rc.fas.harvard.edu:
-            wrk-0.nerc-ocp-obs.rc.fas.harvard.edu:
-            wrk-1.nerc-ocp-obs.rc.fas.harvard.edu:
-            wrk-2.nerc-ocp-obs.rc.fas.harvard.edu:
             wrk-1.nerc-ocp-prod.rc.fas.harvard.edu:
             wrk-2.nerc-ocp-prod.rc.fas.harvard.edu:
             wrk-3.nerc-ocp-prod.rc.fas.harvard.edu:
