@@ -1,6 +1,6 @@
 all:
   children:
-    obs:
+    nerc_ocp_obs:
       vars:
         description: |
           The new logging/metrics/observability cluster, replacing the
@@ -12,10 +12,17 @@ all:
         ansible_python_interpreter: /usr/bin/python3.9
         api_vip: 10.30.9.15
         ingress_vip: 10.30.9.16
-      hosts:
-        ctl-0.nerc-ocp-obs.rc.fas.harvard.edu:
-        ctl-1.nerc-ocp-obs.rc.fas.harvard.edu:
-        ctl-2.nerc-ocp-obs.rc.fas.harvard.edu:
-        wrk-0.nerc-ocp-obs.rc.fas.harvard.edu:
-        wrk-1.nerc-ocp-obs.rc.fas.harvard.edu:
-        wrk-2.nerc-ocp-obs.rc.fas.harvard.edu:
+      children:
+        nerc_ocp_obs_controllers:
+          hosts:
+            ctl-0.nerc-ocp-obs.rc.fas.harvard.edu:
+            ctl-1.nerc-ocp-obs.rc.fas.harvard.edu:
+            ctl-2.nerc-ocp-obs.rc.fas.harvard.edu:
+        nerc_ocp_obs_workers:
+          hosts:
+            wrk-0.nerc-ocp-obs.rc.fas.harvard.edu:
+              ansible_host: 10.30.9.23
+            wrk-1.nerc-ocp-obs.rc.fas.harvard.edu:
+              ansible_host: 10.30.9.24
+            wrk-2.nerc-ocp-obs.rc.fas.harvard.edu:
+              ansible_host: 10.30.9.25
