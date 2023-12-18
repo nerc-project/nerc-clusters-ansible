@@ -27,10 +27,13 @@ all:
                   cmcSlot: server-3a
                 wrk-2.nerc-ocp-obs.rc.fas.harvard.edu:
                   cmcSlot: server-3b
+                ctl-0.nerc-ocp-obs.rc.fas.harvard.edu:
+                  cmcSlot: server-1a
+                ctl-1.nerc-ocp-obs.rc.fas.harvard.edu:
+                  cmcSlot: server-1b
+                ctl-2.nerc-ocp-obs.rc.fas.harvard.edu:
+                  cmcSlot: server-1c
           hosts:
-            ctl-0.nerc-ocp-obs.rc.fas.harvard.edu:
-            ctl-1.nerc-ocp-obs.rc.fas.harvard.edu:
-            ctl-2.nerc-ocp-obs.rc.fas.harvard.edu:
             wrk-1.nerc-ocp-prod.rc.fas.harvard.edu:
             wrk-2.nerc-ocp-prod.rc.fas.harvard.edu:
             wrk-3.nerc-ocp-prod.rc.fas.harvard.edu:

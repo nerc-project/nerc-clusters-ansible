@@ -19,6 +19,7 @@
         url_password: "{{ bmcPassword }}"
         validate_certs: false
         force_basic_auth: true
+        timeout: 60
       register: system
 
     - name: Save system information to file
@@ -36,6 +37,7 @@
         url_password: "{{ bmcPassword }}"
         validate_certs: false
         force_basic_auth: true
+        timeout: 60
       register: idrac
 
     - name: Save idrac information to file
