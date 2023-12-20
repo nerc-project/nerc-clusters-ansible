@@ -6,6 +6,10 @@ all:
           Test cluster deployed using hypershift.
         api_vip: 10.30.8.90
         ingress_vip: 10.30.8.91
+        ansible_user: core
+        ansible_python_interpreter: /usr/bin/python3.9
       hosts:
         wrk-73.nerc-ocp-prod.rc.fas.harvard.edu:
+          ansible_host: 10.30.8.83
         wrk-79.nerc-ocp-prod.rc.fas.harvard.edu:
+          ansible_host: 10.30.8.89
