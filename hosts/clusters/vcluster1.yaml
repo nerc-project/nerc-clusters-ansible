@@ -10,6 +10,4 @@ all:
         ansible_python_interpreter: /usr/bin/python3.9
       hosts:
         wrk-73.nerc-ocp-prod.rc.fas.harvard.edu:
-          ansible_host: 10.30.8.83
         wrk-79.nerc-ocp-prod.rc.fas.harvard.edu:
-          ansible_host: 10.30.8.89

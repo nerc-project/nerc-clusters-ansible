@@ -17,7 +17,7 @@ all:
             ctl-2.nerc-ocp-test.rc.fas.harvard.edu:
         dellManagedHosts:
           children:
-            dellManagedHosts_cmd8:
+            dellManagedHosts_cmc8:
               vars:
                 cmcAddress: cmc-8-obm.nerc-ocp-prod.rc.fas.harvard.edu
               hosts:
@@ -97,27 +97,40 @@ all:
             wrk-61.nerc-ocp-prod.rc.fas.harvard.edu:
             wrk-62.nerc-ocp-prod.rc.fas.harvard.edu:
             wrk-63.nerc-ocp-prod.rc.fas.harvard.edu:
-    #       wrk-64.nerc-ocp-prod.rc.fas.harvard.edu:
-    #       wrk-65.nerc-ocp-prod.rc.fas.harvard.edu:
-    #       wrk-66.nerc-ocp-prod.rc.fas.harvard.edu:
-    #       wrk-67.nerc-ocp-prod.rc.fas.harvard.edu:
-    #       wrk-68.nerc-ocp-prod.rc.fas.harvard.edu:
-    #       wrk-69.nerc-ocp-prod.rc.fas.harvard.edu:
+
+            ## These are now the observavility cluster
+            # wrk-64.nerc-ocp-prod.rc.fas.harvard.edu:
+            # wrk-65.nerc-ocp-prod.rc.fas.harvard.edu:
+            # wrk-66.nerc-ocp-prod.rc.fas.harvard.edu:
+            # wrk-67.nerc-ocp-prod.rc.fas.harvard.edu:
+            # wrk-68.nerc-ocp-prod.rc.fas.harvard.edu:
+            # wrk-69.nerc-ocp-prod.rc.fas.harvard.edu:
+
             wrk-70.nerc-ocp-prod.rc.fas.harvard.edu:
             wrk-71.nerc-ocp-prod.rc.fas.harvard.edu:
             wrk-72.nerc-ocp-prod.rc.fas.harvard.edu:
+              ansible_host: 10.30.8.82
             wrk-73.nerc-ocp-prod.rc.fas.harvard.edu:
+              ansible_host: 10.30.8.83
             wrk-74.nerc-ocp-prod.rc.fas.harvard.edu:
+              ansible_host: 10.30.8.84
             wrk-75.nerc-ocp-prod.rc.fas.harvard.edu:
+              ansible_host: 10.30.8.85
             wrk-76.nerc-ocp-prod.rc.fas.harvard.edu:
+              ansible_host: 10.30.8.86
             wrk-77.nerc-ocp-prod.rc.fas.harvard.edu:
+              ansible_host: 10.30.8.87
             wrk-78.nerc-ocp-prod.rc.fas.harvard.edu:
+              ansible_host: 10.30.8.88
             wrk-79.nerc-ocp-prod.rc.fas.harvard.edu:
+              ansible_host: 10.30.8.89
             wrk-80.nerc-ocp-prod.rc.fas.harvard.edu:
             wrk-81.nerc-ocp-prod.rc.fas.harvard.edu:
             wrk-82.nerc-ocp-prod.rc.fas.harvard.edu:
             wrk-83.nerc-ocp-prod.rc.fas.harvard.edu:
+              ansible_host: 10.30.8.93
             wrk-84.nerc-ocp-prod.rc.fas.harvard.edu:
+              ansible_host: 10.30.8.94
             wrk-85.nerc-ocp-prod.rc.fas.harvard.edu:
             wrk-86.nerc-ocp-prod.rc.fas.harvard.edu:
             wrk-87.nerc-ocp-prod.rc.fas.harvard.edu:
